@@ -36,3 +36,6 @@ to start in production mode.
    - /port:8888/docs/update/:id :PUT. Requires a JSON-body which inlcudes the keys "name" and "html". Returns a JSON-object of the updated document with the new values.
 
    -  /port:8888/docs/:id :DELETE. Returns a JSON-object of the deleted document.
+
+Link to [editor](http://www.student.bth.se/~emfh21/editor/)
+
