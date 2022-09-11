@@ -25,14 +25,14 @@ to start in production mode.
 
 4. The structure of the backend routes are following:
 
-   - "/port:8888/docs" :GET. Returns a JSON-object containing an array of documents in database.
+   - /port:8888/docs :GET. Returns a JSON-object containing an array of documents in database.
   
-   - "/port:8888/docs" :POST. Requires a JSON-body which inlcudes keys "name" and "html". Returns a JSON object of the created document.
+   - /port:8888/docs :POST. Requires a JSON-body which inlcudes keys "name" and "html". Returns a JSON object of the created document.
   
-   - "/port:8888/docs/init" :POST. Uses the JSON-file "data/docs.json" as a test to insert many documents into database. Can be customized after preferences.
+   - /port:8888/docs/init :POST. Uses the JSON-file "data/docs.json" as a test to insert many documents into database. Can be customized after preferences.
 
-   - "/port:8888/docs/docs/:id" :GET. Returns a single JSON-object matching param ":id".
+   - /port:8888/docs/docs/:id :GET. Returns a single JSON-object matching param ":id".
 
-   - "/port:8888/docs/update/:id" :PUT. Requires a JSONö-body which inlcudes the keys "name" and "html". Returns a JSON-object of the updated document with the new values.
+   - /port:8888/docs/update/:id :PUT. Requires a JSON-body which inlcudes the keys "name" and "html". Returns a JSON-object of the updated document with the new values.
 
-   -  "/port:8888/docs/:id" :DELETE. Returns a JSON-object of the deleted document.
+   -  /port:8888/docs/:id :DELETE. Returns a JSON-object of the deleted document.
