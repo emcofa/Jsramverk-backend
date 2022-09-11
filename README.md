@@ -2,7 +2,6 @@
 
 This is an API for a Trix editor using [MongoDb](https://www.mongodb.com/) and the framework [Express](https://expressjs.com/) and is a school work for the course JavaScript frameworks at [Blekinge Institute of Technology](https://www.bth.se/utbildning/program-och-kurser/pagwg/)
 
-
 1. To download this repository use this code to clone: 
 `git clone https://github.com/emcofa/Jsramverk-backend.git`
 
@@ -26,14 +25,14 @@ to start in production mode.
 
 4. The structure of the backend routes are following:
 
-   - "http://port:8888/docs":GET. Returns a JSON-object containing an array of documents in database.
+   - http://port:8888/docs:GET. Returns a JSON-object containing an array of documents in database.
   
-   - "http://port:8888/docs":POST. Requires a JSON-body which inlcudes keys "name" and "html". Returns a JSON object of the created document.
+   - http://port:8888/docs:POST. Requires a JSON-body which inlcudes keys "name" and "html". Returns a JSON object of the created document.
   
-   - "http://port:8888/docs/init":POST. Uses the JSON-file "data/docs.json" as a test to insert many documents into database. Can be customized after preferences.
+   - http://port:8888/docs/init:POST. Uses the JSON-file "data/docs.json" as a test to insert many documents into database. Can be customized after preferences.
 
-   - "http://port:8888/docs/docs/:id":GET. Returns a single JSON-object matching param ":id".
+   - http://port:8888/docs/docs/:id:GET. Returns a single JSON-object matching param ":id".
 
-   - "http://port:8888/docs/update/:id":PUT. Requires a JSONö-body which inlcudes the keys "name" and "html". Returns a JSON-object of the updated document with the new values.
+   - http://port:8888/docs/update/:id:PUT. Requires a JSONö-body which inlcudes the keys "name" and "html". Returns a JSON-object of the updated document with the new values.
 
-   -  "http://port:8888/docs/:id":DELETE. Returns a JSON-object of the deleted document.
+   -  http://port:8888/docs/:id:DELETE. Returns a JSON-object of the deleted document.
