@@ -8,7 +8,9 @@ This is an API for a Trix editor using [MongoDb](https://www.mongodb.com/) and t
 1. Navigate to directory: 
 `cd Jsramverk-backend`
 
-1. Create a hidden file ".env" and add your link to your MongoDb Atlas database. Like this:
+1. Create a hidden file ".env" 
+`touch .env`
+and add your link to your MongoDb Atlas database. Example format:
 `ATLAS_URI=mongodb+srv://link-goes-here`
 
 1. Use 
