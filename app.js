@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-
+const path = require("path");
 const routeDocs = require("./routes/docs.js");
 
 const app = express();
@@ -29,6 +29,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/docs", routeDocs);
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/*', function(req,res) {
+
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+
+});
 
 app.get('/', (req, res) => {
     res.json({
