@@ -1,7 +1,6 @@
 # API for a MongoDb Trix editor
-### This is an API for a Trix editor using [MongoDb](https://www.mongodb.com/) and the framework [Express](https://expressjs.com/).
-----------
-### This repository is a school work for the course JavaScript frameworks at [Blekinge Institute of Technology](https://www.bth.se/utbildning/program-och-kurser/pagwg/)
+
+### This is an API for a Trix editor using [MongoDb](https://www.mongodb.com/) and the framework [Express](https://expressjs.com/) and is a school work for the course JavaScript frameworks at [Blekinge Institute of Technology](https://www.bth.se/utbildning/program-och-kurser/pagwg/)
 ----------
 1. To download this repository use this code to clone: 
 `git clone https://github.com/emcofa/Jsramverk-backend.git`
