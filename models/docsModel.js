@@ -45,7 +45,7 @@ const docs = {
         try {
             db = await database.getDb();
 
-            const result = await db.collection.findOne(myquery)
+            const result = await db.collection.findOne(myquery);
 
             return result;
         } catch (error) {
@@ -61,6 +61,7 @@ const docs = {
             db = await database.getDb();
 
             const result = await db.collection.updateOne(myquery, newvalues);
+
             console.log("1 document updated");
 
             return result;
@@ -77,6 +78,7 @@ const docs = {
             db = await database.getDb();
 
             const result = await db.collection.deleteOne(myquery);
+
             console.log("1 document deleted");
 
             return result;

@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
-    "production": "NODE_ENV='production' node app.js"
+    "production": "NODE_ENV='production' node app.js",
+    "test": "nyc --reporter=html --reporter=text --reporter=clover mocha --timeout 10000",
+    "posttest": "npm run eslint",
+    "eslint": "eslint .",
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "keywords": [],
   "author": "",
@@ -19,5 +23,14 @@
     "nodemon": "^2.0.19",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "eslint": "^8.23.1",
+    "eslint-plugin-react": "^7.31.8",
+    "javascript-style-guide": "^1.0.1",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0"
   }
 }

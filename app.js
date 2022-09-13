@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -21,8 +21,8 @@ app.disable('x-powered-by');
 
 // don't show the log when it is test
 if (process.env.NODE_ENV !== 'test') {
-  // use morgan to log at command line
-  app.use(morgan('combined')); // 'combined' outputs the Apache style LOGs
+    // use morgan to log at command line
+    app.use(morgan('combined')); // 'combined' outputs the Apache style LOGs
 }
 
 app.use(bodyParser.json());
@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 });
 
 const server = app.listen(port, () => {
-  console.log('docs api listening on port ' + port);
+    console.log('docs api listening on port ' + port);
 });
 
 module.exports = server;
