@@ -14,7 +14,7 @@ const collectionName = "docs";
 
 describe('DOCS database', () => {
     before(() => {
-        return new Promise(async (resolve) => {
+        return async () => {
             const db = await database.getDb();
 
             db.db.listCollections(
@@ -31,9 +31,8 @@ describe('DOCS database', () => {
                 })
                 .finally(async function () {
                     await db.client.close();
-                    resolve();
                 });
-        });
+        };
     });
 
     describe('GET /docs', () => {
@@ -62,7 +61,6 @@ describe('DOCS database', () => {
                 });
         });
     });
-
 
     describe('POST /docs', () => {
         let newId;
