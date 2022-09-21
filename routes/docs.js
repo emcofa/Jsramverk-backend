@@ -54,7 +54,6 @@ docsRoutes.put(
     "/update/:id",
     async (req, res) => {
         let myquery = { _id: ObjectId(req.params.id) };
-
         let newvalues = {
             $set: {
                 name: req.body.name,
