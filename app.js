@@ -39,7 +39,8 @@ app.get('/', (req, res) => {
 
 const io = require("socket.io")(httpServer, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "*",
+        // origin: "http://localhost:3000",
         methods: ["GET", "POST", "PUT"]
     }
 });
@@ -61,15 +62,14 @@ io.sockets.on('connection', function(socket) {
             },
         };
 
-        console.log(data)
         clearTimeout(throttleTimer);
-        console.log("writing");
+        console.log("Writing");
         let data_id = { 
             _id: ObjectId(data._id)
         }
         throttleTimer = setTimeout(async function() {
             await docsModel.update(data_id, newValues);
-            console.log("saved to database")
+            console.log("Saved to database")
         }, 2000);
     });
 });
