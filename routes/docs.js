@@ -2,10 +2,12 @@ const express = require("express");
 const docsRoutes = express.Router();
 const ObjectId = require("mongodb").ObjectId;
 const docsModel = require("../models/docsModel");
+const authModel = require("../models/authModel");
 
-
+//Get all docs
 docsRoutes.get(
     "/",
+    // (req, res, next) => authModel.checkToken(req, res, next),
     async (req, res) => {
         const docs = await docsModel.getAllDocs();
 
@@ -15,31 +17,35 @@ docsRoutes.get(
     }
 );
 
-docsRoutes.post(
-    "/",
+//Get user
+docsRoutes.get(
+    "/user",
+    // (req, res, next) => authModel.checkToken(req, res, next),
     async (req, res) => {
-        const newDoc = req.body;
-
-        const result = await docsModel.insertDoc(newDoc);
-
-        return res.status(201).json({ data: result });
-    }
-);
-
-
-docsRoutes.post(
-    "/init",
-    async (req, res) => {
-        const docs = await docsModel.init();
-
-        return res.status(201).json({
-            data: docs
+        const user = await docsModel.getUser(req.body);
+        return res.status(200).json({
+            data: user
         });
     }
 );
 
+//Insert new doc
+docsRoutes.post(
+    "/",
+    // (req, res, next) => authModel.checkToken(req, res, next),
+    async (req, res) => {
+        // const newDoc = req.body;
+        // console.log(req.body)
+        const result = await docsModel.insertDoc(req.body);
+        // const result = await userModel.addOneDocument(req, res);
+        return res.status(201).json({ data: result });
+    }
+);
+
+//Get single doc
 docsRoutes.get(
     "/docs/:id",
+    // (req, res, next) => authModel.checkToken(req, res, next),
     async (req, res) => {
         let myquery = { _id: ObjectId(req.params.id) };
         const docs = await docsModel.getById(myquery);
@@ -50,34 +56,30 @@ docsRoutes.get(
     }
 );
 
+//Update doc
 docsRoutes.put(
     "/update/:id",
+    // (req, res, next) => authModel.checkToken(req, res, next),
     async (req, res) => {
         let myquery = { _id: ObjectId(req.params.id) };
-        let newvalues = {
-            $set: {
-                name: req.body.name,
-                html: req.body.html
-            },
-        };
-
-        const docs = await docsModel.update(myquery, newvalues);
+        const docs = await docsModel.update(myquery, req.body);
 
         return res.status(200).json({
             data: docs
         });
     });
 
-// docsRoutes.delete(
-//     "/:id",
-//     async (req, res) => {
-//         let myquery = { _id: ObjectId(req.params.id) };
+//Update doc
+docsRoutes.put(
+    "/access/:id",
+    // (req, res, next) => authModel.checkToken(req, res, next),
+    async (req, res) => {
+        let myquery = { _id: ObjectId(req.params.id) };
+        const docs = await docsModel.giveAccess(myquery, req.body);
 
-//         const docs = await docsModel.delete(myquery);
-
-//         return res.status(200).json({
-//             data: docs
-//         });
-//     });
+        return res.status(200).json({
+            data: docs
+        });
+    });
 
 module.exports = docsRoutes;

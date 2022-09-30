@@ -1,8 +1,7 @@
 const mongo = require("mongodb").MongoClient;
-const collectionName = "docs";
 
 const database = {
-    getDb: async function getDb() {
+    getDb: async function getDb(collectionName = "docs") {
         let dsn = process.env.ATLAS_URI;
 
         if (process.env.NODE_ENV === 'test') {

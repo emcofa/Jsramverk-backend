@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const routeDocs = require("./routes/docs.js");
+const routeAuth = require("./routes/auth.js");
 
 const docsModel = require("./models/docsModel")
 const app = express();
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/docs", routeDocs);
+app.use("/", routeAuth);
 
 
 app.get('/', (req, res) => {

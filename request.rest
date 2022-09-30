@@ -1,0 +1,38 @@
+GET http://localhost:8888/docs
+Authorization: Bearer e491f3f9a17d546cc7c09d34451f9a58e1d46dab8bd6973faab0218a8db278b8540a0f32861a8e83e871ba52d697b2bfcde34f6cd392904918c453840a6fe0a7
+
+
+###
+
+GET http://localhost:8888/docs/user
+
+
+###
+
+POST http://localhost:8888/docs/user
+Content-Type: application/json
+
+{
+    "username": "Kyle",
+    "password": "password"
+}
+
+
+###
+
+POST http://localhost:8888/docs/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY2NDI2NDc1Mn0.tnRkecAcLAdJLogPh6H23R3eKVDplBm-o7-j4dSANgc"
+}
+
+
+###
+
+POST http://localhost:8888/docs/login
+Content-Type: application/json
+
+{
+    "username": "Kyle"
+}
