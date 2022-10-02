@@ -79,25 +79,26 @@ const docs = {
         }
     },
     update: async function update(myquery, body) {
-        console.log(myquery)
-        console.log(body)
+        console.log("myquery", myquery)
+        console.log("body", body)
         let db;
-
-        console.log(body.allowed_user);
 
         let newvalues = {
             $set: {
                 name: body.name,
                 html: body.html
             }
+            // $push: { allowed_users: body.allowed_user }
         };
+
+        console.log(newvalues.set);
 
         try {
             db = await database.getDb();
 
-            const result = await db.collection.updateOne(myquery, newvalues);
+            const result = await db.collection.updateOne(myquery, body);
 
-            console.log("1 document updated");
+            console.log(`Document ${myquery._id} updated`);
 
             return result;
         } catch (error) {
@@ -114,10 +115,6 @@ const docs = {
         // console.log(body.allowed_user);
 
         let newvalues = {
-            $set: {
-                name: body.name,
-                html: body.html
-            },
             $push: { allowed_users: body.allowed_user }
         };
 

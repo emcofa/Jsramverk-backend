@@ -1,7 +1,5 @@
 const database = require("../db/conn.js");
 
-const ObjectId = require('mongodb').ObjectId;
-
 const validator = require("email-validator");
 const bcrypt = require('bcryptjs');
 
@@ -128,6 +126,7 @@ const authModel = {
 
                 const token = jwt.sign(payload, secret, { expiresIn: '1h' });
 
+                console.log("token", token);
                 return res.status(201).json({
                     data: {
                         _id: user["_id"],
@@ -146,7 +145,7 @@ const authModel = {
         });
     },
 
-    checkToken: function(req, res, next) {
+    verifyToken: function(req, res, next) {
         const token = req.headers['x-access-token'];
 
         jwt.verify(token, secret, function(err, decoded) {

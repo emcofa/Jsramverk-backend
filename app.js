@@ -64,11 +64,14 @@ io.sockets.on('connection', function(socket) {
             },
         };
 
+        console.log("hej jag heter emmie", newValues);
+
         clearTimeout(throttleTimer);
         console.log("Writing");
         let data_id = { 
             _id: ObjectId(data._id)
         }
+        console.log("data_id", data_id);
         throttleTimer = setTimeout(async function() {
             await docsModel.update(data_id, newValues);
             console.log("Saved to database")
