@@ -4,9 +4,11 @@ const docs = {
     getUser: async function getUser(body) {
         let filter = { email: body.email };
         let db;
+
         try {
             db = await database.getDb("users");
             const result = await db.collection.findOne(filter);
+
             return result;
         } catch (error) {
             return {
@@ -46,7 +48,8 @@ const docs = {
             html: body.html,
             owner: body.owner,
             allowed_users: [body.owner]
-        }
+        };
+
         try {
             db = await database.getDb();
 
@@ -79,8 +82,8 @@ const docs = {
         }
     },
     update: async function update(myquery, body) {
-        console.log("myquery", myquery)
-        console.log("body", body)
+        console.log("myquery", myquery);
+        console.log("body", body);
         let db;
 
         let newvalues = {

@@ -14,6 +14,8 @@ const authModel = {
         const email = body.email;
         const password = body.password;
 
+        let emailExists = await authModel.verifyEmail(email);
+
         if (!email || !password) {
             return res.status(400).json({
                 errors: {
@@ -31,6 +33,19 @@ const authModel = {
                 }
             });
         }
+
+        if (!emailExists) {
+            authModel.hashPassword(res, body, password, email);
+        } else {
+            return res.status(400).json({
+                errors: {
+                    status: 400,
+                    message: "E-mail already exists",
+                }
+            });
+        }
+    },
+    hashPassword: async function hasPassword(res, body, password, email) {
         bcrypt.hash(password, saltRounds, async function (err, hash) {
             if (err) {
                 return res.status(500).json({
@@ -62,7 +77,7 @@ const authModel = {
                         status: 500,
                         message: "Could not created new user",
                     }
-                })
+                });
             } finally {
                 await db.client.close();
             }
@@ -88,6 +103,7 @@ const authModel = {
             const query = { email: email };
 
             const user = await db.collection.findOne(query);
+
             if (user) {
                 return authModel.comparePasswords(res, user, password);
             }
@@ -103,14 +119,38 @@ const authModel = {
                     status: 500,
                     message: "Could not find user",
                 }
-            })
+            });
         } finally {
             await db.client.close();
         }
     },
+    findUser: async function (filter) {
+        let db;
+        try {
+            db = await database.getDb("users");
+            const result = await db.collection.findOne(filter);
+            return result;
+        } catch (error) {
+            return {
+                errors: {
+                    message: error.message,
+                }
+            }
+        } finally {
+            await db.client.close();
+        }
+    },
+    verifyEmail: async function verifyEmail(email) {
+        let emailObj = { email: email };
+        let user = await authModel.findUser(emailObj);
 
+        if (user) {
+            return true;
+        } else {
+            return false;
+        }
+    },
     comparePasswords: async function comparePasswords(res, user, password) {
-
         bcrypt.compare(password, user.password, function (err, result) {
             if (err) {
                 return res.status(500).json({
@@ -126,7 +166,6 @@ const authModel = {
 
                 const token = jwt.sign(payload, secret, { expiresIn: '1h' });
 
-                console.log("token", token);
                 return res.status(201).json({
                     data: {
                         _id: user["_id"],
@@ -145,20 +184,16 @@ const authModel = {
         });
     },
 
-    verifyToken: function(req, res, next) {
+    verifyToken: function (req, res, next) {
         const token = req.headers['x-access-token'];
 
-        jwt.verify(token, secret, function(err, decoded) {
+        jwt.verify(token, secret, function (err) {
             if (err) {
                 console.log('error');
                 return res.status(500).json({
                     message: "Error"
                 });
             }
-
-            console.log(decoded);
-
-            // Valid token send on the request
             next();
         });
     }

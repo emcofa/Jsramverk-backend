@@ -7,7 +7,7 @@ const cors = require('cors');
 const routeDocs = require("./routes/docs.js");
 const routeAuth = require("./routes/auth.js");
 
-const docsModel = require("./models/docsModel")
+const docsModel = require("./models/docsModel");
 const app = express();
 const httpServer = require("http").createServer(app);
 
@@ -68,13 +68,14 @@ io.sockets.on('connection', function(socket) {
 
         clearTimeout(throttleTimer);
         console.log("Writing");
-        let data_id = { 
+        let dataId = {
             _id: ObjectId(data._id)
-        }
-        console.log("data_id", data_id);
+        };
+
+        console.log("dataId", dataId);
         throttleTimer = setTimeout(async function() {
-            await docsModel.update(data_id, newValues);
-            console.log("Saved to database")
+            await docsModel.update(dataId, newValues);
+            console.log("Saved to database");
         }, 2000);
     });
 });

@@ -23,6 +23,7 @@ docsRoutes.post(
     (req, res, next) => authModel.verifyToken(req, res, next),
     async (req, res) => {
         const result = await docsModel.insertDoc(req.body);
+
         return res.status(201).json({ data: result });
     }
 );
