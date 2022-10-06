@@ -48,6 +48,7 @@ docsRoutes.put(
     (req, res, next) => authModel.verifyToken(req, res, next),
     async (req, res) => {
         let myquery = { _id: ObjectId(req.params.id) };
+        // console.log("req", req)
         const docs = await docsModel.update(myquery, req.body);
 
         return res.status(200).json({
@@ -56,19 +57,6 @@ docsRoutes.put(
     });
 
 //Give user access
-docsRoutes.put(
-    "/access/:id",
-    (req, res, next) => authModel.verifyToken(req, res, next),
-    async (req, res) => {
-        let myquery = { _id: ObjectId(req.params.id) };
-        const docs = await docsModel.giveAccess(myquery, req.body);
-
-        return res.status(200).json({
-            data: docs
-        });
-    });
-
-//Update doc
 docsRoutes.put(
     "/access/:id",
     (req, res, next) => authModel.verifyToken(req, res, next),

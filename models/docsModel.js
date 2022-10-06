@@ -1,25 +1,6 @@
 const database = require("../db/conn.js");
 
 const docs = {
-    getUser: async function getUser(body) {
-        let filter = { email: body.email };
-        let db;
-
-        try {
-            db = await database.getDb("users");
-            const result = await db.collection.findOne(filter);
-
-            return result;
-        } catch (error) {
-            return {
-                errors: {
-                    message: error.message,
-                }
-            };
-        } finally {
-            await db.client.close();
-        }
-    },
     getAllDocs: async function getAllDocs() {
         let db;
 
@@ -40,7 +21,6 @@ const docs = {
         }
     },
     insertDoc: async function insertDoc(body) {
-        console.log(body);
         let db;
 
         let docs = {
@@ -67,6 +47,7 @@ const docs = {
     },
 
     getById: async function getById(myquery) {
+        console.log(myquery)
         let db;
 
         try {
@@ -82,19 +63,7 @@ const docs = {
         }
     },
     update: async function update(myquery, body) {
-        console.log("myquery", myquery);
-        console.log("body", body);
         let db;
-
-        let newvalues = {
-            $set: {
-                name: body.name,
-                html: body.html
-            }
-            // $push: { allowed_users: body.allowed_user }
-        };
-
-        console.log(newvalues.set);
 
         try {
             db = await database.getDb();
@@ -111,11 +80,8 @@ const docs = {
         }
     },
     giveAccess: async function giveAccess(myquery, body) {
-        console.log(myquery);
-        console.log("body", body);
+        console.log(body);
         let db;
-
-        // console.log(body.allowed_user);
 
         let newvalues = {
             $push: { allowed_users: body.allowed_user }
@@ -135,23 +101,23 @@ const docs = {
             await db.client.close();
         }
     },
-    delete: async function update(myquery) {
-        let db;
+    // delete: async function update(myquery) {
+    //     let db;
 
-        try {
-            db = await database.getDb();
+    //     try {
+    //         db = await database.getDb();
 
-            const result = await db.collection.deleteOne(myquery);
+    //         const result = await db.collection.deleteOne(myquery);
 
-            console.log("1 document deleted");
+    //         console.log("1 document deleted");
 
-            return result;
-        } catch (error) {
-            console.error(error.message);
-        } finally {
-            await db.client.close();
-        }
-    },
+    //         return result;
+    //     } catch (error) {
+    //         console.error(error.message);
+    //     } finally {
+    //         await db.client.close();
+    //     }
+    // },
 };
 
 module.exports = docs;

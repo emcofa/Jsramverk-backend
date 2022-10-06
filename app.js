@@ -1,9 +1,21 @@
 require('dotenv').config();
 
 const express = require('express');
+
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
+
+const visual = true;
+const { graphqlHTTP } = require('express-graphql');
+const {
+    GraphQLSchema
+} = require("graphql");
+
+const RootQueryType = require("./graphql/root.js");
+const RootMutationType = require("./graphql/rootMutation.js");
+
+
 const routeDocs = require("./routes/docs.js");
 const routeAuth = require("./routes/auth.js");
 
@@ -12,6 +24,7 @@ const app = express();
 const httpServer = require("http").createServer(app);
 
 const ObjectId = require("mongodb").ObjectId;
+const authModel = require('./models/authModel.js');
 
 const port = process.env.PORT || 8888;
 
@@ -32,6 +45,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/docs", routeDocs);
 app.use("/", routeAuth);
 
+const schema = new GraphQLSchema({
+    query: RootQueryType,
+    mutation: RootMutationType
+});
+
+app.use('/graphql', authModel.verifyToken);
+app.use('/graphql', graphqlHTTP({
+    schema: schema,
+    graphiql: visual, // Visual är satt till true under utveckling
+}));
 
 app.get('/', (req, res) => {
     res.json({
@@ -49,8 +72,8 @@ const io = require("socket.io")(httpServer, {
 
 let throttleTimer;
 
-io.sockets.on('connection', function(socket) {
-    socket.on('create', function(room) {
+io.sockets.on('connection', function (socket) {
+    socket.on('create', function (room) {
         socket.join(room);
     });
 
@@ -64,16 +87,13 @@ io.sockets.on('connection', function(socket) {
             },
         };
 
-        console.log("hej jag heter emmie", newValues);
-
         clearTimeout(throttleTimer);
         console.log("Writing");
         let dataId = {
             _id: ObjectId(data._id)
         };
 
-        console.log("dataId", dataId);
-        throttleTimer = setTimeout(async function() {
+        throttleTimer = setTimeout(async function () {
             await docsModel.update(dataId, newValues);
             console.log("Saved to database");
         }, 2000);
