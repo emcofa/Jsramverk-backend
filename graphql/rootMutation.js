@@ -51,6 +51,23 @@ const RootMutationType = new GraphQLObjectType({
                 return updatedDoc;
             }
         },
+        updateName: {
+            type: DocumentType,
+            description: 'Update doc',
+            args: {
+                _id: { type: GraphQLID },
+                name: { type: new GraphQLNonNull(GraphQLString) }
+            },
+            resolve: async function (parent, args) {
+                let newvalues = {
+                    name: args.name
+                };
+
+                const updatedDoc = await docs.update({_id: new ObjectId(args._id)}, newvalues)
+
+                return updatedDoc;
+            }
+        },
         giveAccess: {
             type: DocumentType,
             description: 'Give access',

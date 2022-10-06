@@ -63,6 +63,7 @@ const docs = {
         }
     },
     update: async function update(myquery, body) {
+        console.log(body);
         let db;
 
         try {
