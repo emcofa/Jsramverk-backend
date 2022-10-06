@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const visual = true;
+const visual = false;
 const { graphqlHTTP } = require('express-graphql');
 const {
     GraphQLSchema
@@ -50,7 +50,7 @@ const schema = new GraphQLSchema({
     mutation: RootMutationType
 });
 
-// app.use('/graphql', authModel.verifyToken);
+app.use('/graphql', authModel.verifyToken);
 app.use('/graphql', graphqlHTTP({
     schema: schema,
     graphiql: visual, // Visual är satt till true under utveckling
