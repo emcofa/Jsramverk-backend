@@ -50,7 +50,7 @@ const schema = new GraphQLSchema({
     mutation: RootMutationType
 });
 
-app.use('/graphql', authModel.verifyToken);
+// app.use('/graphql', authModel.verifyToken);
 app.use('/graphql', graphqlHTTP({
     schema: schema,
     graphiql: visual, // Visual är satt till true under utveckling
