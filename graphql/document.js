@@ -16,6 +16,6 @@ const DocumentType = new GraphQLObjectType({
         owner: { type: GraphQLString },
         allowed_users: { type: new GraphQLList(GraphQLString) }
     })
-})
+});
 
 module.exports = DocumentType;

@@ -47,7 +47,6 @@ const docs = {
     },
 
     getById: async function getById(myquery) {
-        console.log(myquery)
         let db;
 
         try {

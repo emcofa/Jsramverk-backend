@@ -126,16 +126,18 @@ const authModel = {
     },
     findUser: async function (filter) {
         let db;
+
         try {
             db = await database.getDb("users");
             const result = await db.collection.findOne(filter);
+
             return result;
         } catch (error) {
             return {
                 errors: {
                     message: error.message,
                 }
-            }
+            };
         } finally {
             await db.client.close();
         }

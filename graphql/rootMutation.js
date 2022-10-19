@@ -5,8 +5,7 @@ const {
     GraphQLList,
     GraphQLString,
     GraphQLID,
-    GraphQLNonNull,
-    graphql
+    GraphQLNonNull
 } = require('graphql');
 
 const DocumentType = require("./document.js");
@@ -46,7 +45,8 @@ const RootMutationType = new GraphQLObjectType({
                     html: args.html
                 };
 
-                const updatedDoc = await docs.update({_id: new ObjectId(args._id)}, {$set:newvalues})
+                const updatedDoc = await docs.update(
+                    { _id: new ObjectId(args._id) }, { $set: newvalues });
 
                 return updatedDoc;
             }
@@ -63,7 +63,8 @@ const RootMutationType = new GraphQLObjectType({
                     name: args.name
                 };
 
-                const updatedDoc = await docs.update({_id: new ObjectId(args._id)}, newvalues)
+                const updatedDoc = await docs.update(
+                    { _id: new ObjectId(args._id) }, newvalues);
 
                 return updatedDoc;
             }
@@ -76,7 +77,8 @@ const RootMutationType = new GraphQLObjectType({
                 allowed_users: { type: GraphQLString }
             },
             resolve: async function (parent, args) {
-                const updatedDoc = await docs.giveAccess({_id: new ObjectId(args._id)}, {allowed_user: args.allowed_users})
+                const updatedDoc = await docs.giveAccess(
+                    { _id: new ObjectId(args._id) }, { allowed_user: args.allowed_users });
 
                 return updatedDoc;
             }

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for backend/routes/docs.js</title>
+    <title>Code coverage report for backend/graphql/rootMutation.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">backend/routes</a> docs.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">backend/graphql</a> rootMutation.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">51.72% </span>
+                <span class="strong">41.17% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/29</span>
+                <span class='fraction'>7/17</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/10</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">51.72% </span>
+                <span class="strong">41.17% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/29</span>
+                <span class='fraction'>7/17</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -135,45 +135,23 @@
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,21 +162,58 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -206,80 +221,107 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = require("express");
-const docsRoutes = express.Router();
-const ObjectId = require("mongodb").ObjectId;
-const docsModel = require("../models/docsModel");
-const authModel = require("../models/authModel");
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const ObjectId = require('mongodb').ObjectId;
 &nbsp;
-//Get all docs
-docsRoutes.get(
-    "/",
-    (req, res, next) =&gt; authModel.verifyToken(req, res, next),
-<span class="fstat-no" title="function not covered" >    as</span>ync (req, res) =&gt; {
-        const docs = <span class="cstat-no" title="statement not covered" >await docsModel.getAllDocs();</span>
+const {
+    GraphQLObjectType,
+    GraphQLList,
+    GraphQLString,
+    GraphQLID,
+    GraphQLNonNull,
+    graphql
+} = require('graphql');
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return res.status(200).json({</span>
-            data: docs
-        });
-    }
-);
+const DocumentType = require("./document.js");
 &nbsp;
-//Insert new doc
-docsRoutes.post(
-    "/",
-    (req, res, next) =&gt; authModel.verifyToken(req, res, next),
-<span class="fstat-no" title="function not covered" >    as</span>ync (req, res) =&gt; {
-        const result = <span class="cstat-no" title="statement not covered" >await docsModel.insertDoc(req.body);</span>
+const docs = require("../models/docsModel.js");
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return res.status(201).json({ data: result });</span>
-    }
-);
+const RootMutationType = new GraphQLObjectType({
+    name: 'Mutation',
+    description: 'Root Mutation',
+    fields: () =&gt; ({
+        insertDocument: {
+            type: DocumentType,
+            description: 'Insert doc',
+            args: {
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                html: { type: GraphQLString },
+                owner: { type: GraphQLString },
+                allowed_users: { type: new GraphQLList(GraphQLString) }
+            },
+            resolve: <span class="fstat-no" title="function not covered" >as</span>ync function (parent, args) {
+                const insertedDoc = <span class="cstat-no" title="statement not covered" >await docs.insertDoc(args);</span>
 &nbsp;
-//Get single doc
-docsRoutes.get(
-    "/docs/:id",
-    (req, res, next) =&gt; authModel.verifyToken(req, res, next),
-<span class="fstat-no" title="function not covered" >    as</span>ync (req, res) =&gt; {
-        let myquery = <span class="cstat-no" title="statement not covered" >{ _id: ObjectId(req.params.id) };</span>
-        const docs = <span class="cstat-no" title="statement not covered" >await docsModel.getById(myquery);</span>
+<span class="cstat-no" title="statement not covered" >                return insertedDoc;</span>
+            }
+        },
+        updateDocument: {
+            type: DocumentType,
+            description: 'Update doc',
+            args: {
+                _id: { type: GraphQLID },
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                html: { type: GraphQLString }
+            },
+            resolve: <span class="fstat-no" title="function not covered" >as</span>ync function (parent, args) {
+                let newvalues = <span class="cstat-no" title="statement not covered" >{</span>
+                    name: args.name,
+                    html: args.html
+                };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return res.status(200).json({</span>
-            data: docs
-        });
-    }
-);
+                const updatedDoc = <span class="cstat-no" title="statement not covered" >await docs.update({_id: new ObjectId(args._id)}, {$set:newvalues})</span>
 &nbsp;
-//Update doc
-docsRoutes.put(
-    "/update/:id",
-    (req, res, next) =&gt; authModel.verifyToken(req, res, next),
-<span class="fstat-no" title="function not covered" >    as</span>ync (req, res) =&gt; {
-        let myquery = <span class="cstat-no" title="statement not covered" >{ _id: ObjectId(req.params.id) };</span>
-        // console.log("req", req)
-        const docs = <span class="cstat-no" title="statement not covered" >await docsModel.update(myquery, req.body);</span>
+<span class="cstat-no" title="statement not covered" >                return updatedDoc;</span>
+            }
+        },
+        updateName: {
+            type: DocumentType,
+            description: 'Update doc',
+            args: {
+                _id: { type: GraphQLID },
+                name: { type: new GraphQLNonNull(GraphQLString) }
+            },
+            resolve: <span class="fstat-no" title="function not covered" >as</span>ync function (parent, args) {
+                let newvalues = <span class="cstat-no" title="statement not covered" >{</span>
+                    name: args.name
+                };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return res.status(200).json({</span>
-            data: docs
-        });
-    });
+                const updatedDoc = <span class="cstat-no" title="statement not covered" >await docs.update({_id: new ObjectId(args._id)}, newvalues)</span>
 &nbsp;
-//Give user access
-docsRoutes.put(
-    "/access/:id",
-<span class="fstat-no" title="function not covered" >    (r</span>eq, res, next) =&gt; <span class="cstat-no" title="statement not covered" >authModel.verifyToken(req, res, next),</span>
-<span class="fstat-no" title="function not covered" >    as</span>ync (req, res) =&gt; {
-        let myquery = <span class="cstat-no" title="statement not covered" >{ _id: ObjectId(req.params.id) };</span>
-        const docs = <span class="cstat-no" title="statement not covered" >await docsModel.giveAccess(myquery, req.body);</span>
+<span class="cstat-no" title="statement not covered" >                return updatedDoc;</span>
+            }
+        },
+        giveAccess: {
+            type: DocumentType,
+            description: 'Give access',
+            args: {
+                _id: { type: GraphQLID },
+                allowed_users: { type: GraphQLString }
+            },
+            resolve: <span class="fstat-no" title="function not covered" >as</span>ync function (parent, args) {
+                const updatedDoc = <span class="cstat-no" title="statement not covered" >await docs.giveAccess({_id: new ObjectId(args._id)}, {allowed_user: args.allowed_users})</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return res.status(200).json({</span>
-            data: docs
-        });
-    });
+<span class="cstat-no" title="statement not covered" >                return updatedDoc;</span>
+            }
+        }
+    })
+});
 &nbsp;
-module.exports = docsRoutes;
-&nbsp;</pre></td></tr></table></pre>
+module.exports = RootMutationType;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
