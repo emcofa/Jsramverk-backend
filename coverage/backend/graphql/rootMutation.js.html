@@ -149,8 +149,10 @@
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -199,22 +201,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -229,21 +215,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const ObjectId = require('mongodb').ObjectId;
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const ObjectId = require('mongodb').ObjectId;
 &nbsp;
 const {
     GraphQLObjectType,
     GraphQLList,
     GraphQLString,
     GraphQLID,
-    GraphQLNonNull,
-    graphql
+    GraphQLNonNull
 } = require('graphql');
 &nbsp;
 const DocumentType = require("./document.js");
@@ -283,7 +288,8 @@ const RootMutationType = new GraphQLObjectType({
                     html: args.html
                 };
 &nbsp;
-                const updatedDoc = <span class="cstat-no" title="statement not covered" >await docs.update({_id: new ObjectId(args._id)}, {$set:newvalues})</span>
+                const updatedDoc = <span class="cstat-no" title="statement not covered" >await docs.update(</span>
+                    { _id: new ObjectId(args._id) }, { $set: newvalues });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >                return updatedDoc;</span>
             }
@@ -300,7 +306,8 @@ const RootMutationType = new GraphQLObjectType({
                     name: args.name
                 };
 &nbsp;
-                const updatedDoc = <span class="cstat-no" title="statement not covered" >await docs.update({_id: new ObjectId(args._id)}, newvalues)</span>
+                const updatedDoc = <span class="cstat-no" title="statement not covered" >await docs.update(</span>
+                    { _id: new ObjectId(args._id) }, newvalues);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >                return updatedDoc;</span>
             }
@@ -313,7 +320,8 @@ const RootMutationType = new GraphQLObjectType({
                 allowed_users: { type: GraphQLString }
             },
             resolve: <span class="fstat-no" title="function not covered" >as</span>ync function (parent, args) {
-                const updatedDoc = <span class="cstat-no" title="statement not covered" >await docs.giveAccess({_id: new ObjectId(args._id)}, {allowed_user: args.allowed_users})</span>
+                const updatedDoc = <span class="cstat-no" title="statement not covered" >await docs.giveAccess(</span>
+                    { _id: new ObjectId(args._id) }, { allowed_user: args.allowed_users });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >                return updatedDoc;</span>
             }
@@ -321,14 +329,15 @@ const RootMutationType = new GraphQLObjectType({
     })
 });
 &nbsp;
-module.exports = RootMutationType;</pre></td></tr></table></pre>
+module.exports = RootMutationType;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-19T07:07:43.320Z
+                at 2022-10-19T09:13:21.311Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -75,7 +75,7 @@ const authModel = {
                 return res.status(500).json({
                     errors: {
                         status: 500,
-                        message: "Could not created new user",
+                        message: "Could not create new user",
                     }
                 });
             } finally {

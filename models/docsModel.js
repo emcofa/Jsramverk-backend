@@ -62,7 +62,6 @@ const docs = {
         }
     },
     update: async function update(myquery, body) {
-        console.log(body);
         let db;
 
         try {
@@ -80,7 +79,7 @@ const docs = {
         }
     },
     giveAccess: async function giveAccess(myquery, body) {
-        console.log(body);
+        // console.log(body);
         let db;
 
         let newvalues = {
