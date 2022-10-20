@@ -81,8 +81,8 @@ const transporter = nodemailer.createTransport(sendGridTransport({
 );
 
 docsRoutes.post("/send", (req, res) => {
-    const { usersName, email, access, doc, text } = req.body
-    console.log(usersName, email, access, doc, text)
+    const { usersName, email, access, doc, text } = req.body;
+
     transporter.sendMail({
         to: access,
         from: "emmie.fahlstrom@outlook.com",
@@ -91,12 +91,12 @@ docsRoutes.post("/send", (req, res) => {
             <p>Visit:</p>
             <a href=${text}>${text}</a>
             <p>to register and start editing.</p>
-            <p>Regards Text Editor-team</p>`
+            <p>Regards, ${email}</p>`
     }).then(resp => {
         res.json({ resp });
     }).catch(err => {
         console.log(err);
-    })
+    });
 });
 
 module.exports = docsRoutes;
