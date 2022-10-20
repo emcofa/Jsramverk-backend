@@ -6,7 +6,7 @@ const authModel = require("../models/authModel");
 
 const nodemailer = require("nodemailer");
 const sendGridTransport = require("nodemailer-sendgrid-transport");
-const { SENDGRID_API } = proccess.env.SENDGRID_API
+const { SENDGRID_API } = require('../config/keys');
 
 //Get all docs
 docsRoutes.get(
@@ -85,7 +85,7 @@ docsRoutes.post("/send", (req, res) => {
     console.log(usersName, email, access, doc, text)
     transporter.sendMail({
         to: access,
-        from: "emfh21@student.bth.se",
+        from: "emmie.fahlstrom@outlook.com",
         subject: "Invitation to edit document",
         html: `<h3>${usersName}</h3><p>You've got and invitation to edit document: "${doc}"
             <p>Visit:</p>
