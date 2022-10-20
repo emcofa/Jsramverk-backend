@@ -26,6 +26,10 @@ const httpServer = require("http").createServer(app);
 const ObjectId = require("mongodb").ObjectId;
 const authModel = require('./models/authModel.js');
 
+// const nodemailer = require("nodemailer")
+// const sendGridTransport = require("nodemailer-sendgrid-transport");
+// const { SENDGRID_API } = require('./config/keys');
+
 const port = process.env.PORT || 8888;
 
 app.use(cors());

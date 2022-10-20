@@ -4,6 +4,10 @@ const ObjectId = require("mongodb").ObjectId;
 const docsModel = require("../models/docsModel");
 const authModel = require("../models/authModel");
 
+const nodemailer = require("nodemailer");
+const sendGridTransport = require("nodemailer-sendgrid-transport");
+const { SENDGRID_API } = require('../config/keys');
+
 //Get all docs
 docsRoutes.get(
     "/",
@@ -68,5 +72,31 @@ docsRoutes.put(
             data: docs
         });
     });
+
+const transporter = nodemailer.createTransport(sendGridTransport({
+    auth: {
+        api_key: SENDGRID_API
+    }
+})
+);
+
+docsRoutes.post("/send", (req, res) => {
+    const { usersName, email, access, doc, text } = req.body
+    console.log(usersName, email, access, doc, text)
+    transporter.sendMail({
+        to: access,
+        from: "emfh21@student.bth.se",
+        subject: "Invitation to edit document",
+        html: `<h3>${usersName}</h3><p>You've got and invitation to edit document: "${doc}"
+            <p>Visit:</p>
+            <a href=${text}>${text}</a>
+            <p>to register and start editing.</p>
+            <p>Regards Text Editor-team</p>`
+    }).then(resp => {
+        res.json({ resp });
+    }).catch(err => {
+        console.log(err);
+    })
+});
 
 module.exports = docsRoutes;
