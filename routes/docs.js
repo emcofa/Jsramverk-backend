@@ -6,7 +6,7 @@ const authModel = require("../models/authModel");
 
 const nodemailer = require("nodemailer");
 const sendGridTransport = require("nodemailer-sendgrid-transport");
-const { SENDGRID_API } = require('../config/keys');
+const { SENDGRID_API } = proccess.env.SENDGRID_API
 
 //Get all docs
 docsRoutes.get(
