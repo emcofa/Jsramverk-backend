@@ -72,7 +72,7 @@ describe('Test the routes.', () => {
                     .send(user)
                     .end((err, res) => {
                         res.should.have.status(400);
-                        res.body.errors.message.should.equal("E-mail already exists");
+                        res.body.errors.message.should.equal("E-mail already exists.");
                     });
             });
 
@@ -87,7 +87,7 @@ describe('Test the routes.', () => {
                     .send(user)
                     .end((err, res) => {
                         res.should.have.status(400);
-                        res.body.errors.message.should.equal("E-mail is not in correct format");
+                        res.body.errors.message.should.equal("E-mail is not in correct format.");
                     });
             });
         });
@@ -120,7 +120,7 @@ describe('Test the routes.', () => {
                     .send(user);
 
                 res.should.have.status(400);
-                res.body.errors.message.should.equal("E-mail or password is missing");
+                res.body.errors.message.should.equal("E-mail or password is missing.");
             });
 
             it('Login non existing user', async () => {
@@ -148,7 +148,7 @@ describe('Test the routes.', () => {
                     .send(user);
 
                 res.should.have.status(401);
-                res.body.errors.message.should.equal("Password not correct");
+                res.body.errors.message.should.equal("Password not correct.");
             });
         });
 
@@ -301,7 +301,6 @@ describe('Test the routes.', () => {
                         res.body.data.insertDocument.html.should.be.an("string");
                         res.body.data.insertDocument.owner.should.be.an("string");
                         res.body.data.insertDocument.allowed_users.should.be.an("array");
-                        console.log(graphQLid);
                         done();
                     });
             });
