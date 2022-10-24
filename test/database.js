@@ -111,8 +111,8 @@ describe('Test the routes.', () => {
         describe('POST /login', () => {
             it('Login user', async () => {
                 let user = {
-                    email: "harry@potter.com",
-                    password: "Hedwig"
+                    email: tempUser,
+                    password: "RandomEmailToNotCreateMultipleUsers"
                 };
 
                 let res = await chai.request(server)
