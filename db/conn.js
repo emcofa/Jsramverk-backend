@@ -2,9 +2,9 @@ const mongo = require("mongodb").MongoClient;
 
 const database = {
     getDb: async function getDb(collectionName = "docs") {
-        let dsn = process.env.ATLAS_URI;
+        let dsn = `${process.env.ATLAS_URI}`;
 
-        if (process.env.NODE_ENV === 'test') {
+        if (`${process.env.NODE_ENV}` === 'test') {
             dsn = "mongodb://localhost:27017/test";
         }
 
