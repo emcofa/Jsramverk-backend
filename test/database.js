@@ -94,8 +94,7 @@ describe('Test the routes.', () => {
 
             it('Register without password', async () => {
                 let user = {
-                    email: tempUser,
-                    password: ""
+                    email: tempUser
                 };
 
                 chai.request(server)
