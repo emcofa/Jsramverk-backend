@@ -10,9 +10,9 @@ const jwt = require('jsonwebtoken');
 let secret;
 
 if (`${process.env.NODE_ENV}` === 'test') {
-    secret = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N"
-    "1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsI"
-    "mV4cCI6MTY2NjYwNzkwMiwiaWF0IjoxNjY2NjA3OTAyfQ.HlF"
+    secret = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N";
+    "1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsI";
+    "mV4cCI6MTY2NjYwNzkwMiwiaWF0IjoxNjY2NjA3OTAyfQ.HlF";
     "gbsbxgGJFGPjx1VmAMWNI63Fa_qT24g0L76Pb_IU";
 } else {
     secret = `${process.env.ACCESS_TOKEN_SECRET}`;
