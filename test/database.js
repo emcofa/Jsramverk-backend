@@ -15,6 +15,7 @@ chai.use(chaiHttp);
 
 describe('Test the routes.', () => {
     let token;
+    let tempUser;
 
     describe('DOCS database', () => {
         before(() => {
@@ -58,11 +59,12 @@ describe('Test the routes.', () => {
                         res.body.data.message.should.equal("User successfully created.");
                         done();
                     });
+                tempUser = user.email;
             });
 
-            it('Register already existed email', async () => {
+            it('Register same email again', async () => {
                 let user = {
-                    email: "harry@potter.com",
+                    email: tempUser,
                     password: "Hedwig"
                 };
 

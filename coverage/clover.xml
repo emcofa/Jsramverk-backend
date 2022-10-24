@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1666293054864" clover="3.2.0">
-  <project timestamp="1666293054864" name="All files">
-    <metrics statements="243" coveredstatements="201" conditionals="31" coveredconditionals="27" methods="46" coveredmethods="32" elements="320" coveredelements="260" complexity="0" loc="243" ncloc="243" packages="6" files="10" classes="10"/>
+<coverage generated="1666604299165" clover="3.2.0">
+  <project timestamp="1666604299165" name="All files">
+    <metrics statements="242" coveredstatements="200" conditionals="31" coveredconditionals="27" methods="46" coveredmethods="32" elements="319" coveredelements="259" complexity="0" loc="242" ncloc="242" packages="5" files="9" classes="9"/>
     <package name="backend">
       <metrics statements="49" coveredstatements="36" conditionals="4" coveredconditionals="3" methods="6" coveredmethods="1"/>
       <file name="app.js" path="/Users/emmiefahlstrom/dbwebb-kurser/jsramverk/backend/app.js">
@@ -55,13 +55,6 @@
         <line num="103" count="1" type="stmt"/>
         <line num="104" count="1" type="stmt"/>
         <line num="107" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="backend.config">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="keys.js" path="/Users/emmiefahlstrom/dbwebb-kurser/jsramverk/backend/config/keys.js">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
       </file>
     </package>
     <package name="backend.db">
@@ -260,37 +253,37 @@
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="38" count="2" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="52" count="2" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
         <line num="56" count="1" type="stmt"/>
         <line num="58" count="1" type="stmt"/>
-        <line num="64" count="1" type="stmt"/>
-        <line num="66" count="2" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
-        <line num="69" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
         <line num="71" count="1" type="stmt"/>
-        <line num="76" count="1" type="stmt"/>
-        <line num="83" count="1" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
         <line num="86" count="0" type="stmt"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
-        <line num="102" count="1" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="105" count="1" type="stmt"/>
       </file>
     </package>
   </project>
