@@ -6,7 +6,9 @@ const authModel = require("../models/authModel");
 
 const nodemailer = require("nodemailer");
 const sendGridTransport = require("nodemailer-sendgrid-transport");
-const { SENDGRID_API } = require('../config/keys');
+// const { SENDGRID_API } = require('../config/keys');
+
+const SENDGRID_API = process.env.SENDGRID_API_KEY
 
 //Get all docs
 docsRoutes.get(
@@ -91,7 +93,8 @@ docsRoutes.post("/send", (req, res) => {
             <p>Visit:</p>
             <a href=${text}>${text}</a>
             <p>to register and start editing.</p>
-            <p>Regards, ${email}</p>`
+            <p>Regards,</p>
+            <p>${email}</p>`
     }).then(resp => {
         res.json({ resp });
     }).catch(err => {
