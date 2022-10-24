@@ -128,7 +128,7 @@ describe('Test the routes.', () => {
 
             it('Login user without password', async () => {
                 let user = {
-                    email: "harry@potter.com",
+                    email: tempUser,
                     password: ""
                 };
 
@@ -156,7 +156,7 @@ describe('Test the routes.', () => {
 
             it('Login user with wrong password', async () => {
                 let user = {
-                    email: "harry@potter.com",
+                    email: tempUser,
                     password: "Hedwwig"
                 };
 
