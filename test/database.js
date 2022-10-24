@@ -123,7 +123,6 @@ describe('Test the routes.', () => {
                 res.body.data.token.should.not.equal(null);
 
                 token = res.body.data.token;
-                console.log(token);
             });
 
             it('Login user without password', async () => {
