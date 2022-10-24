@@ -11,7 +11,6 @@ chai.use(chaiHttp);
 const database = require("../db/conn.js");
 const collectionName = "docs";
 
-chai.use(chaiHttp);
 
 describe('Test the routes.', () => {
     let token;
@@ -169,7 +168,6 @@ describe('Test the routes.', () => {
             it('500 SAD PATH', (done) => {
                 chai.request(server)
                     .get("/docs")
-                    // .set('x-access-token', token)
                     .end((err, res) => {
                         res.should.have.status(500);
                         done();
@@ -195,7 +193,6 @@ describe('Test the routes.', () => {
                         res.body.should.be.an("object");
                         res.body.data._id.should.be.a('string');
                         newId = res.body.data._id;
-
                         done();
                     });
             });
@@ -273,6 +270,119 @@ describe('Test the routes.', () => {
                     .end((err, res) => {
                         res.should.have.status(500);
 
+                        done();
+                    });
+            });
+        });
+        describe('GRAPHQL TEST', () => {
+            const name = "Test doc";
+            const html = "Test 123";
+            const owner = "test@test.se";
+            const allowedUsers = ["test@test.se"];
+            let graphQLid;
+
+            it('Insert document', (done) => {
+                chai.request(server)
+                    .post("/graphql")
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/json')
+                    .set('x-access-token', token)
+                    .send({
+                        query: `mutation { insertDocument(name: "${name}",
+                        html: "${html}", owner: "${owner}", allowed_users: "${allowedUsers}") {
+                            _id, name, html, owner, allowed_users
+                        } }` })
+                    .end((err, res) => {
+                        graphQLid = res.body.data.insertDocument._id;
+                        res.should.have.status(200);
+                        res.body.data.should.be.an("object");
+                        res.body.data.insertDocument._id.should.be.an("string");
+                        res.body.data.insertDocument.name.should.be.an("string");
+                        res.body.data.insertDocument.html.should.be.an("string");
+                        res.body.data.insertDocument.owner.should.be.an("string");
+                        res.body.data.insertDocument.allowed_users.should.be.an("array");
+                        console.log(graphQLid);
+                        done();
+                    });
+            });
+            it('Update document', (done) => {
+                chai.request(server)
+                    .post("/graphql")
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/json')
+                    .set('x-access-token', token)
+                    .send({
+                        query: `mutation { updateName(_id: "${graphQLid}",
+                        name: "Update name test") {
+                                name, _id
+                        } }` })
+                    .end((err, res) => {
+                        res.should.have.status(200);
+                        done();
+                    });
+            });
+            it('Give access', (done) => {
+                chai.request(server)
+                    .post("/graphql")
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/json')
+                    .set('x-access-token', token)
+                    .send({
+                        query: `mutation { giveAccess(_id: "${graphQLid}",
+                        allowed_users: "test2@test.se") {
+                            allowed_users
+                    } }` })
+                    .end((err, res) => {
+                        res.should.have.status(200);
+                        done();
+                    });
+            });
+            it('Give access error', (done) => {
+                chai.request(server)
+                    .post("/graphql")
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/json')
+                    .set('x-access-token', token)
+                    .send({
+                        query: `mutation { giveAccess(_id: "${graphQLid}",
+                        allowed_users: error) {
+                            allowed_users
+                    } }` })
+                    .end((err, res) => {
+                        res.should.have.status(400);
+                        done();
+                    });
+            });
+            it('Update document', (done) => {
+                chai.request(server)
+                    .post("/graphql")
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/json')
+                    .set('x-access-token', token)
+                    .send({
+                        query: `mutation { updateDocument(_id: "${graphQLid}",
+                        name: "Update name test", html: "test") {
+                                name, _id
+                        } }` })
+                    .end((err, res) => {
+                        res.should.have.status(200);
+                        done();
+                    });
+            });
+            it('Get docs', (done) => {
+                chai.request(server)
+                    .post("/graphql")
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/json')
+                    .set('x-access-token', token)
+                    .send({
+                        query: "{ docs { name, html } }"
+                    })
+                    .end((err, res) => {
+                        res.should.have.status(200);
+                        res.body.data.should.be.an("object");
+                        res.body.data.docs[0].name.should.be.an("string");
+                        res.body.data.docs[0].html.should.be.an("string");
                         done();
                     });
             });
