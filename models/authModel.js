@@ -29,7 +29,7 @@ const authModel = {
             return res.status(400).json({
                 errors: {
                     status: 400,
-                    message: "E-mail or password is missing",
+                    message: "E-mail or password is missing.",
                 }
             });
         }
@@ -38,7 +38,7 @@ const authModel = {
             return res.status(400).json({
                 errors: {
                     status: 400,
-                    message: "E-mail is not in correct format",
+                    message: "E-mail is not in correct format.",
                 }
             });
         }
@@ -49,7 +49,7 @@ const authModel = {
             return res.status(400).json({
                 errors: {
                     status: 400,
-                    message: "E-mail already exists",
+                    message: "E-mail already exists.",
                 }
             });
         }
@@ -60,7 +60,7 @@ const authModel = {
                 return res.status(500).json({
                     errors: {
                         status: 500,
-                        message: "Could not hash password",
+                        message: "Could not hash password.",
                     }
                 });
             }
@@ -118,7 +118,8 @@ const authModel = {
             }
 
             return res.status(401).json({
-                data: {
+                errors: {
+                    status: 401,
                     message: "User does not exist."
                 }
             });
@@ -126,7 +127,7 @@ const authModel = {
             return res.status(500).json({
                 errors: {
                     status: 500,
-                    message: "Could not find user",
+                    message: "Could not find user.",
                 }
             });
         } finally {
@@ -189,20 +190,19 @@ const authModel = {
             return res.status(401).json({
                 errors: {
                     status: 401,
-                    message: "Password not correct"
+                    message: "Password is not correct."
                 }
             });
         });
     },
 
     verifyToken: function (req, res, next) {
-        const token = req.headers['x-access-token'];
+        const token = req.headers['x-access-token.'];
 
         jwt.verify(token, secret, function (err) {
             if (err) {
-                console.log('error');
                 return res.status(500).json({
-                    message: "Error"
+                    message: "Error."
                 });
             }
             next();
