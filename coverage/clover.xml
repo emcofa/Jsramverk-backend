@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1666604564109" clover="3.2.0">
-  <project timestamp="1666604564110" name="All files">
-    <metrics statements="242" coveredstatements="200" conditionals="31" coveredconditionals="27" methods="46" coveredmethods="32" elements="319" coveredelements="259" complexity="0" loc="242" ncloc="242" packages="5" files="9" classes="9"/>
+<coverage generated="1666604964889" clover="3.2.0">
+  <project timestamp="1666604964889" name="All files">
+    <metrics statements="242" coveredstatements="199" conditionals="31" coveredconditionals="26" methods="46" coveredmethods="32" elements="319" coveredelements="257" complexity="0" loc="242" ncloc="242" packages="5" files="9" classes="9"/>
     <package name="backend">
       <metrics statements="49" coveredstatements="36" conditionals="4" coveredconditionals="3" methods="6" coveredmethods="1"/>
       <file name="app.js" path="/Users/emmiefahlstrom/dbwebb-kurser/jsramverk/backend/app.js">
@@ -63,13 +63,13 @@
         <metrics statements="10" coveredstatements="10" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="5" count="13" type="stmt"/>
-        <line num="7" count="13" type="cond" truecount="1" falsecount="1"/>
-        <line num="8" count="13" type="stmt"/>
-        <line num="11" count="13" type="stmt"/>
-        <line num="15" count="13" type="stmt"/>
-        <line num="16" count="13" type="stmt"/>
-        <line num="18" count="13" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="7" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="18" count="12" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
       </file>
     </package>
@@ -118,9 +118,9 @@
       </file>
     </package>
     <package name="backend.models">
-      <metrics statements="103" coveredstatements="92" conditionals="24" coveredconditionals="22" methods="15" coveredmethods="15"/>
+      <metrics statements="103" coveredstatements="91" conditionals="24" coveredconditionals="21" methods="15" coveredmethods="15"/>
       <file name="authModel.js" path="/Users/emmiefahlstrom/dbwebb-kurser/jsramverk/backend/models/authModel.js">
-        <metrics statements="66" coveredstatements="61" conditionals="24" coveredconditionals="22" methods="10" coveredmethods="10"/>
+        <metrics statements="66" coveredstatements="60" conditionals="24" coveredconditionals="21" methods="10" coveredmethods="10"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -128,11 +128,11 @@
         <line num="8" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
-        <line num="17" count="4" type="stmt"/>
-        <line num="19" count="4" type="cond" truecount="4" falsecount="0"/>
-        <line num="20" count="1" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="19" count="3" type="cond" truecount="3" falsecount="1"/>
+        <line num="20" count="0" type="stmt"/>
         <line num="28" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="29" count="1" type="stmt"/>
         <line num="37" count="2" type="cond" truecount="2" falsecount="0"/>
@@ -161,16 +161,16 @@
         <line num="111" count="1" type="stmt"/>
         <line num="117" count="0" type="stmt"/>
         <line num="124" count="3" type="stmt"/>
-        <line num="130" count="4" type="stmt"/>
-        <line num="131" count="4" type="stmt"/>
-        <line num="132" count="4" type="stmt"/>
-        <line num="134" count="4" type="stmt"/>
+        <line num="130" count="3" type="stmt"/>
+        <line num="131" count="3" type="stmt"/>
+        <line num="132" count="3" type="stmt"/>
+        <line num="134" count="3" type="stmt"/>
         <line num="136" count="0" type="stmt"/>
-        <line num="142" count="4" type="stmt"/>
-        <line num="146" count="4" type="stmt"/>
-        <line num="147" count="4" type="stmt"/>
-        <line num="149" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="150" count="2" type="stmt"/>
+        <line num="142" count="3" type="stmt"/>
+        <line num="146" count="3" type="stmt"/>
+        <line num="147" count="3" type="stmt"/>
+        <line num="149" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="150" count="1" type="stmt"/>
         <line num="152" count="2" type="stmt"/>
         <line num="156" count="2" type="stmt"/>
         <line num="157" count="2" type="cond" truecount="1" falsecount="1"/>
@@ -237,8 +237,8 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="4" type="stmt"/>
         <line num="15" count="4" type="stmt"/>
