@@ -91,20 +91,6 @@ describe('Test the routes.', () => {
                         res.body.errors.message.should.equal("E-mail is not in correct format");
                     });
             });
-
-            it('Register without password', async () => {
-                let user = {
-                    email: tempUser
-                };
-
-                chai.request(server)
-                    .post("/register")
-                    .send(user)
-                    .end((err, res) => {
-                        res.should.have.status(400);
-                        res.body.errors.message.should.equal("E-mail or password is missing");
-                    });
-            });
         });
 
         describe('POST /login', () => {

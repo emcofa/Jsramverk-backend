@@ -95,8 +95,8 @@ docsRoutes.post("/send", (req, res) => {
             <p>to register and start editing.</p>
             <p>Regards,</p>
             <p>${email}</p>`
-    }).then(resp => {
-        res.json({ resp });
+    }).then(response => {
+        res.json({ response });
     }).catch(err => {
         console.log(err);
     });
