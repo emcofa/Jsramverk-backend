@@ -17,6 +17,7 @@ docsRoutes.get(
     async (req, res) => {
         const docs = await docsModel.getAllDocs();
 
+        console.log(docs);
         return res.status(200).json({
             data: docs
         });

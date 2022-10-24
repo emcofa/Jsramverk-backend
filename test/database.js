@@ -134,7 +134,7 @@ describe('Test the routes.', () => {
                     .send(user);
 
                 res.should.have.status(401);
-                res.body.data.message.should.equal("User does not exist.");
+                res.body.errors.message.should.equal("User does not exist.");
             });
 
             it('Login user with wrong password', async () => {
@@ -148,7 +148,7 @@ describe('Test the routes.', () => {
                     .send(user);
 
                 res.should.have.status(401);
-                res.body.errors.message.should.equal("Password not correct.");
+                res.body.errors.message.should.equal("Password is not correct.");
             });
         });
 
@@ -159,7 +159,7 @@ describe('Test the routes.', () => {
                     .set('x-access-token', token)
                     .end((err, res) => {
                         res.should.have.status(200);
-                        res.body.should.be.an("object");
+                        // res.body.should.be.an("object");
                         res.body.data.should.be.an("array");
 
                         done();

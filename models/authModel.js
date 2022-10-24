@@ -7,7 +7,7 @@ const saltRounds = 10;
 
 const jwt = require('jsonwebtoken');
 
-let secret;
+let secret = process.env.ACCESS_TOKEN_SECRET;
 
 if (`${process.env.NODE_ENV}` === 'test') {
     secret = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N";
@@ -84,7 +84,7 @@ const authModel = {
                 return res.status(500).json({
                     errors: {
                         status: 500,
-                        message: "Could not create new user",
+                        message: "Could not create new user.",
                     }
                 });
             } finally {
@@ -101,7 +101,7 @@ const authModel = {
             return res.status(400).json({
                 errors: {
                     status: 400,
-                    message: "E-mail or password is missing",
+                    message: "E-mail or password is missing.",
                 }
             });
         }
@@ -119,7 +119,6 @@ const authModel = {
 
             return res.status(401).json({
                 errors: {
-                    status: 401,
                     message: "User does not exist."
                 }
             });
@@ -197,12 +196,13 @@ const authModel = {
     },
 
     verifyToken: function (req, res, next) {
-        const token = req.headers['x-access-token.'];
+        const token = req.headers['x-access-token'];
 
         jwt.verify(token, secret, function (err) {
             if (err) {
+                console.log('error');
                 return res.status(500).json({
-                    message: "Error."
+                    message: "Error"
                 });
             }
             next();
