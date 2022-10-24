@@ -97,9 +97,9 @@ docsRoutes.post("/send", (req, res) => {
             <p>Regards,</p>
             <p>${email}</p>`
     }).then(response => {
-        return res.json({ response });
+        res.json({ response });
     }).catch(err => {
-        return err;
+        console.log(err);
     });
 });
 
