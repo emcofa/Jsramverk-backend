@@ -77,6 +77,21 @@ describe('Test the routes.', () => {
                     });
             });
 
+            it('Register without password', async () => {
+                let user = {
+                    email: tempUser,
+                    password: ""
+                };
+
+                chai.request(server)
+                    .post("/register")
+                    .send(user)
+                    .end((err, res) => {
+                        res.should.have.status(400);
+                        res.body.errors.message.should.equal("E-mail or password is missing.");
+                    });
+            });
+
             it('Register email incorrect format', async () => {
                 let user = {
                     email: "harrypotter.com",
