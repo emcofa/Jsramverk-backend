@@ -64,7 +64,7 @@ const RootMutationType = new GraphQLObjectType({
                 };
 
                 const updatedDoc = await docs.update(
-                    { _id: new ObjectId(args._id) }, newvalues);
+                    { _id: new ObjectId(args._id) }, { $set: newvalues });
 
                 return updatedDoc;
             }

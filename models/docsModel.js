@@ -69,8 +69,6 @@ const docs = {
 
             const result = await db.collection.updateOne(myquery, body);
 
-            console.log(`Document ${myquery._id} updated`);
-
             return result;
         } catch (error) {
             console.error(error.message);
@@ -79,7 +77,6 @@ const docs = {
         }
     },
     giveAccess: async function giveAccess(myquery, body) {
-        // console.log(body);
         let db;
 
         let newvalues = {
@@ -90,8 +87,6 @@ const docs = {
             db = await database.getDb();
 
             const result = await db.collection.updateOne(myquery, newvalues);
-
-            console.log("1 document updated");
 
             return result;
         } catch (error) {

@@ -55,6 +55,7 @@ describe('Test the routes.', () => {
                     .send(user)
                     .end((err, res) => {
                         res.should.have.status(201);
+                        res.body.data.should.be.an("object");
                         res.body.data.message.should.equal("User successfully created.");
                         done();
                     });
@@ -104,6 +105,7 @@ describe('Test the routes.', () => {
                     .send(user);
 
                 res.should.have.status(201);
+                res.body.data.should.be.an("object");
                 res.body.data.token.should.not.equal(null);
 
                 token = res.body.data.token;
@@ -170,6 +172,7 @@ describe('Test the routes.', () => {
                     .get("/docs")
                     .end((err, res) => {
                         res.should.have.status(500);
+                        res.body.message.should.equal("Error");
                         done();
                     });
             });
@@ -178,10 +181,12 @@ describe('Test the routes.', () => {
         describe('POST & PUT /docs', () => {
             let newId;
 
-            it('201 Insert, update and get single doc by ID ', (done) => {
+            it('201 Insert new doc', (done) => {
                 let doc = {
                     name: "Test Doc",
-                    html: "Testing testing"
+                    html: "Testing testing",
+                    owner: "testing@test.se",
+                    allowed_users: ["testing@test.se"]
                 };
 
                 chai.request(server)
@@ -191,28 +196,36 @@ describe('Test the routes.', () => {
                     .end((err, res) => {
                         res.should.have.status(201);
                         res.body.should.be.an("object");
+                        res.body.data._id.should.not.equal(null);
                         res.body.data._id.should.be.a('string');
+                        res.body.data.name.should.be.a('string');
+                        res.body.data.html.should.be.a('string');
+                        res.body.data.owner.should.be.a('string');
+                        res.body.data.allowed_users.should.be.a('array');
                         newId = res.body.data._id;
                         done();
                     });
             });
 
-            it('Update doc', (done) => {
+            it('200 Update doc', (done) => {
                 chai.request(server)
                     .put(`/docs/update/${newId}`)
                     .set('x-access-token', token)
                     .send({
-                        _id: newId,
-                        name: "Test Doc",
-                        html: "Testing testing"
+                        $set: {
+                            name: "Test Doc update",
+                            html: "Testing testing update"
+                        }
                     })
                     .end((err, res) => {
                         res.should.have.status(200);
+                        res.body.should.be.an("object");
+                        res.body.data.modifiedCount.should.equal(1);
 
                         done();
                     });
             });
-            it('Update doc error (without token)', (done) => {
+            it('500 Update doc error (without token)', (done) => {
                 chai.request(server)
                     .put(`/docs/update/${newId}`)
                     .send({
@@ -222,31 +235,38 @@ describe('Test the routes.', () => {
                     })
                     .end((err, res) => {
                         res.should.have.status(500);
+                        res.body.message.should.equal("Error");
 
                         done();
                     });
             });
-            it('Get single doc', (done) => {
+            it('200 Get single doc', (done) => {
                 chai.request(server)
                     .get(`/docs/docs/${newId}`)
                     .set('x-access-token', token)
                     .end((err, res) => {
                         res.should.have.status(200);
                         res.body.should.be.an("object");
+                        res.body.data._id.should.be.an("string");
+                        res.body.data.name.should.be.an("string");
+                        res.body.data.html.should.be.an("string");
+                        res.body.data.owner.should.be.an("string");
+                        res.body.data.allowed_users.should.be.an("array");
 
                         done();
                     });
             });
-            it('Get single doc error (without token)', (done) => {
+            it('500 Get single doc error (without token)', (done) => {
                 chai.request(server)
                     .get(`/docs/docs/${newId}`)
                     .end((err, res) => {
                         res.should.have.status(500);
+                        res.body.message.should.equal("Error");
 
                         done();
                     });
             });
-            it('Give access', (done) => {
+            it('200 Give access', (done) => {
                 chai.request(server)
                     .put(`/docs/access/${newId}`)
                     .set('x-access-token', token)
@@ -256,11 +276,11 @@ describe('Test the routes.', () => {
                     })
                     .end((err, res) => {
                         res.should.have.status(200);
-
+                        res.body.data.modifiedCount.should.equal(1);
                         done();
                     });
             });
-            it('Give access error (without token)', (done) => {
+            it('500 Give access error (without token)', (done) => {
                 chai.request(server)
                     .put(`/docs/access/${newId}`)
                     .send({
@@ -269,6 +289,7 @@ describe('Test the routes.', () => {
                     })
                     .end((err, res) => {
                         res.should.have.status(500);
+                        res.body.message.should.equal("Error");
 
                         done();
                     });
@@ -281,7 +302,7 @@ describe('Test the routes.', () => {
             const allowedUsers = ["test@test.se"];
             let graphQLid;
 
-            it('Insert document', (done) => {
+            it('200 Insert document', (done) => {
                 chai.request(server)
                     .post("/graphql")
                     .set('Content-Type', 'application/json')
@@ -304,7 +325,7 @@ describe('Test the routes.', () => {
                         done();
                     });
             });
-            it('Update document', (done) => {
+            it('200 Update name', (done) => {
                 chai.request(server)
                     .post("/graphql")
                     .set('Content-Type', 'application/json')
@@ -317,10 +338,11 @@ describe('Test the routes.', () => {
                         } }` })
                     .end((err, res) => {
                         res.should.have.status(200);
+                        res.body.data.should.be.an("object");
                         done();
                     });
             });
-            it('Give access', (done) => {
+            it('200 Give access', (done) => {
                 chai.request(server)
                     .post("/graphql")
                     .set('Content-Type', 'application/json')
@@ -333,10 +355,11 @@ describe('Test the routes.', () => {
                     } }` })
                     .end((err, res) => {
                         res.should.have.status(200);
+                        res.body.data.should.be.an("object");
                         done();
                     });
             });
-            it('Give access error', (done) => {
+            it('400 Give access error', (done) => {
                 chai.request(server)
                     .post("/graphql")
                     .set('Content-Type', 'application/json')
@@ -352,7 +375,7 @@ describe('Test the routes.', () => {
                         done();
                     });
             });
-            it('Update document', (done) => {
+            it('200 Update document', (done) => {
                 chai.request(server)
                     .post("/graphql")
                     .set('Content-Type', 'application/json')
@@ -365,10 +388,11 @@ describe('Test the routes.', () => {
                         } }` })
                     .end((err, res) => {
                         res.should.have.status(200);
+                        res.body.data.should.be.an("object");
                         done();
                     });
             });
-            it('Get docs', (done) => {
+            it('200 Get docs', (done) => {
                 chai.request(server)
                     .post("/graphql")
                     .set('Content-Type', 'application/json')

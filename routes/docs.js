@@ -17,7 +17,6 @@ docsRoutes.get(
     async (req, res) => {
         const docs = await docsModel.getAllDocs();
 
-        console.log(docs);
         return res.status(200).json({
             data: docs
         });
@@ -94,7 +93,7 @@ docsRoutes.post("/send", (req, res) => {
             <p>Visit:</p>
             <a href=${text}>${text}</a>
             <p>to register and start editing.</p>
-            <p>Regards,</p>
+            <p>Regards user,</p>
             <p>${email}</p>`
     }).then(response => {
         res.json({ response });
