@@ -22,11 +22,10 @@ and add your link to your MongoDb Atlas database. Example format:
 1. Add your SendGrid API-key to your ".env" file. Example format:
 `SENDGRID_API_KEY=api-key-goes-here`
 
-1. Change "from" user in send route ("routes/docs.js") to your own verified email at SendGrid:
-`SENDGRID_API_KEY=api-key-goes-here`
+1. Change "from" user in send route ("routes/docs.js") to your own verified email at SendGrid.
 
 
-1. To start your server use: 
+2. To start your server use: 
 `npm run start` 
 or 
 `npm run production`
