@@ -8,16 +8,25 @@ This is an API for a Trix editor using [MongoDb](https://www.mongodb.com/) and t
 1. Navigate to directory: 
 `cd Jsramverk-backend`
 
+1. Use 
+`npm install`
+to install all the dependencies.
+
 1. Create a hidden file ".env" 
 `touch .env`
 and add your link to your MongoDb Atlas database. Example format:
 `ATLAS_URI=mongodb+srv://link-goes-here`
 
-1. Use 
-`npm install`
-to install all the dependencies.
+1. Create an account at https://sendgrid.com/ and follow instructions to start using it.
 
-2. To start your server use: 
+1. Add your SendGrid API-key to your ".env" file. Example format:
+`SENDGRID_API_KEY=api-key-goes-here`
+
+1. Change "from" user in send route ("routes/docs.js") to your own verified email at SendGrid:
+`SENDGRID_API_KEY=api-key-goes-here`
+
+
+1. To start your server use: 
 `npm run start` 
 or 
 `npm run production`
@@ -26,7 +35,11 @@ to start in production mode.
 3. To put your backend into operation you can download [Azure](https://azure.microsoft.com/en-us/) and create an App service after your preferences. After that you have your backend API accessed to your frontend.
 
 4. The structure of the backend routes are following:
+   
+   - /port:8888/register :POST. Requires a JSON-body which inlcudes keys "email" and "password". 
 
+   - /port:8888/login :POST. Requires a JSON-body which inlcudes keys "email" and "password". 
+  
    - /port:8888/docs :GET. Returns a JSON-object containing an array of documents in database.
   
    - /port:8888/docs :POST. Requires a JSON-body which inlcudes keys "name" and "html". Returns a JSON object of the created document.
@@ -36,8 +49,6 @@ to start in production mode.
    - /port:8888/docs/docs/:id :GET. Returns a single JSON-object matching param ":id".
 
    - /port:8888/docs/update/:id :PUT. Requires a JSON-body which inlcudes the keys "name" and "html". Returns a JSON-object of the updated document with the new values.
-
-   -  /port:8888/docs/:id :DELETE. Returns a JSON-object of the deleted document.
 
 Link to [editor](http://www.student.bth.se/~emfh21/editor/)
 
